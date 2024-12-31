@@ -1,4 +1,4 @@
-from backend.app.api import health_check
+from app.api import health_check
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import query_routes

@@ -1,6 +1,6 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqGeneration
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
-from ..config import get_settings
+from app.config import get_settings
 
 settings = get_settings()
 
@@ -8,7 +8,7 @@ class LLMService:
     def __init__(self):
         # Initialize tokenizer and model
         self.tokenizer = AutoTokenizer.from_pretrained(settings.MODEL_NAME)
-        self.model = AutoModelForSeq2SeqGeneration.from_pretrained(settings.MODEL_NAME)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(settings.MODEL_NAME)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model.to(self.device)
         

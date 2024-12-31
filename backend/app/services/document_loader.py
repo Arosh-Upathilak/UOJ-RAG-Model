@@ -1,6 +1,9 @@
-from langchain.document_loaders import DirectoryLoader, PDFLoader, CSVLoader
+from langchain_community.document_loaders import DirectoryLoader, CSVLoader
+from langchain_community.document_loaders.pdf import PDFPlumberLoader as PDFLoader
+
+
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from ..config import get_settings
+from app.config import get_settings
 
 settings = get_settings()
 

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
-from ..models.schemas import Query, Response
-from ..services.vector_store import VectorStore
-from ..services.embeddings import EmbeddingService
-from ..services.llm import LLMService
-from ..dependencies import get_vector_store
+from app.models.schemas import Query, Response
+from app.services.vector_store import VectorStore
+from app.services.embeddings import EmbeddingService
+from app.services.llm import LLMService
+from app.dependencies import get_vector_store
 
 router = APIRouter()
 
