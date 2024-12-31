@@ -1,17 +1,20 @@
-from langchain.embeddings import OpenAIEmbeddings
+from sentence_transformers import SentenceTransformer
 from ..config import get_settings
 
 settings = get_settings()
 
 class EmbeddingService:
     def __init__(self):
-        self.embeddings = OpenAIEmbeddings(
-            model=settings.EMBEDDING_MODEL,
-            openai_api_key=settings.OPENAI_API_KEY
-        )
 
+        self.model = SentenceTransformer(settings.EMBEDDING_MODEL)
+        
     def get_embeddings(self, texts: list[str]):
-        return self.embeddings.embed_documents(texts)
+
+        embeddings = self.model.encode(texts, convert_to_tensor=False)
+        return embeddings.tolist()  # Convert numpy arrays to lists for consistency
 
     def get_query_embedding(self, text: str):
-        return self.embeddings.embed_query(text)
+
+
+        embedding = self.model.encode(text, convert_to_tensor=False)
+        return embedding.tolist()  # Convert numpy array to list for consistency

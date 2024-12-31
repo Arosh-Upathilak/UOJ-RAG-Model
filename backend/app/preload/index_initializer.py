@@ -37,7 +37,7 @@ def initialize_index(data_dir: str, persistent_dir: str):
 
 if __name__ == "__main__":
     # Directory containing your preloaded documents (e.g., PDFs or text files)
-    DATA_DIR = "./data"
+    DATA_DIR = "./app/preload/documents"
 
     # Directory for persistent storage of FAISS index and documents
     PERSISTENT_DIR = "./persistent_data"
